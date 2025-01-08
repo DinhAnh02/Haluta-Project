@@ -1,4 +1,7 @@
 // common
+.text_no_wrap {
+  white-space: nowrap;
+}
 .flex {
   display: flex;
 }
@@ -86,6 +89,7 @@ footer {
   margin: 0 auto;
   padding-top: 15px;
   flex-wrap: wrap;
+  padding-left: 5px;
 }
 .logo_footer {
   background-image: url("./image/Group.png");
@@ -123,4 +127,12 @@ footer {
   height: 12px;
   background-size: cover;
   margin-right: 5px;
+}
+.footer_down {
+  padding-top: 22px;
+  text-align: center;
+  height: 120px;
+  border-top: 1px solid #a0a4a8;
+  color: #828282;
+  margin-top: 10px;
 }

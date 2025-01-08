@@ -1,4 +1,10 @@
 // common
+.text_no_wrap {
+  white-space: nowrap;
+}
+.undline {
+  text-decoration: none;
+}
 .flex {
   display: flex;
 }
@@ -59,6 +65,7 @@
   max-width: 1366px;
   width: 100%;
   height: 70px;
+  padding: 0 15px;
 }
 .header_content {
   max-width: 1172px;
@@ -89,6 +96,7 @@
   width: 90px;
   height: 61px;
   background-size: cover;
+  margin-right: 10px;
 }
 .header_search {
   background-image: url("./image/search.png");
@@ -110,6 +118,11 @@
   width: 17.81px;
   height: 17.81px;
   display: none;
+  margin-left: 10px;
+}
+.header-right {
+  margin-left: 10px;
+  white-space: nowrap;
 }
 @media (max-width: 1000px) {
   // common
@@ -120,4 +133,17 @@
     display: none;
   }
   //end
+}
+// tablet
+@media (max-width: 768px) {
+}
+// mobile
+@media (max-width: 480px) {
+  .hotline {
+    padding-right: 0;
+    justify-content: center;
+  }
+  .header_left input {
+    font-size: 9px;
+  }
 }
