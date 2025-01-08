@@ -1,3 +1,7 @@
+.width_full {
+  width: 100%;
+}
+
 .signup {
   display: flex;
   justify-content: center;
@@ -7,14 +11,22 @@
 }
 
 .register-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   position: relative;
   background-color: #fff;
   border-radius: 10px;
-  padding: 30px 50px;
+  padding: 20px 24px;
   max-width: 500px;
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+.content {
+  width: 100%;
+  max-width: 400px;
 }
 
 .register-header {
@@ -25,13 +37,27 @@
   margin-bottom: 20px;
 }
 
+.row-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.phone {
+  width: 100%;
+  max-width: 170px;
+}
+
+.name-customer {
+  width: 100%;
+  max-width: 220px;
+  margin-right: 10px;
+}
+
 .label-text {
   color: #4caf50;
 }
 
 .form-control {
-  width: 100%;
-  max-width: 400px;
   color: #495057;
   background-color: #fff;
   border: 1px solid #ced4da;
@@ -82,11 +108,17 @@
   text-decoration: none;
 }
 
+.button-signin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .register-button {
   background: #388e3c;
   color: #ffffff;
   border-radius: 30px;
-  width: 100%;
+  width: 80%;
   padding: 10px 0;
   margin-top: 20px;
   border: none;
