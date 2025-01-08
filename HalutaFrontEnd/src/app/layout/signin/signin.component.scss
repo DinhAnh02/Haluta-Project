@@ -1,49 +1,80 @@
-.container {
-  color: white;
-  height: 100vh;
-}
-.login-form {
-  background-color: rgb(12, 12, 55);
-  border-radius: 10px;
-  padding: 20px;
-  max-width: 500px;
-  border: 1px solid rgb(32, 34, 60);
-  align-items: center;
+.signin {
+  display: flex;
   justify-content: center;
-}
-.login-header {
-  text-align: center;
-  color: rgb(105, 244, 181);
-  margin-bottom: 20px;
-}
-.form-control {
-  background-color: transparent;
-  border: none;
-  color: white;
-}
-.form-control:focus {
-  color: white;
-  background-color: transparent;
-  outline: none;
-  border-color: transparent;
+  align-items: center;
+  height: 100vh;
+  color: #2e7d32;
 }
 
-.divider-nospace {
-  border-top: 1px solid white;
+.po_re {
+  position: relative;
+}
+
+.login-form {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 50px 24px 20px;
+  width: 100%;
+  border-radius: 10px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+.content {
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-header {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 800;
+  color: #2e7d32;
+  margin-bottom: 20px;
+}
+
+.form-control {
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  color: #495057;
+}
+
+.form-control:focus {
+  color: #2e7d32;
+  background-color: #ffffff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(46, 125, 50, 0.5);
+  border-color: #66bb6a;
 }
 
 .password-field {
   position: relative;
 }
+
 .password-toggle {
   position: absolute;
-  top: 50%;
-  right: 10px;
+  top: 51px;
+  right: 16px;
   transform: translateY(-50%);
   color: rgb(105, 244, 181);
   cursor: pointer;
 }
+
+.login-other {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0px;
+  width: 100%;
+}
+
 .checkbox-text {
+  font-size: 13px;
   color: rgb(243, 165, 42);
   display: flex;
   justify-content: space-between;
@@ -52,8 +83,8 @@
 }
 /* Màu checkbox khi được chọn */
 .checkbox-text input[type="checkbox"]:checked {
-  border-color: white;
-  background-color: rgb(233, 66, 178);
+  border-color: #2e7d32;
+  background-color: #4caf50;
 }
 
 .form-check-input {
@@ -61,7 +92,7 @@
 }
 
 .register-link {
-  color: rgb(105, 244, 181);
+  color: #66bb6a;
   text-decoration: none;
 }
 .access-right {
@@ -75,35 +106,93 @@
   border: 1px solid rgb(225, 64, 180);
 }
 
+.button-signup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-button {
+  background: #388e3c;
+  color: #ffffff;
+  border-radius: 30px;
+  width: 80%;
+  padding: 10px 0;
+  margin-top: 20px;
+  border: none;
+}
+
+.divider {
+  height: 1px;
+  width: 120px;
+  background-color: #a5d6a7;
+}
+
+.text {
+  font-size: 13px;
+  margin: 0 12px;
+}
+
+.text-center {
+  font-size: 13px;
+  margin: 20px 0;
+}
+
 .form-control::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: rgba(243, 165, 42, 0.4);
+  color: rgba(46, 125, 50, 0.6); /* Placeholder xanh lá nhạt */
   opacity: 1;
   /* Firefox */
 }
 
 .form-control:-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  color: rgba(243, 165, 42, 0.4);
+  color: rgba(46, 125, 50, 0.6);
 }
 
 .form-control::-ms-input-placeholder {
   /* Microsoft Edge */
-  color: rgba(243, 165, 42, 0.4);
+  color: rgba(46, 125, 50, 0.6);
 }
 
-.login-button {
-  background: linear-gradient(to right, rgb(225, 64, 180), rgb(126, 43, 237));
-  color: white;
-  border-radius: 30px;
+// Tài khoản xã hội
+.el-button {
   width: 100%;
-  padding: 10px 0;
-  margin-top: 20px;
-  border: none;
+  max-width: 124px;
+  display: inline-block;
+  line-height: 1;
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #dcdfe6;
+  color: #606266;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  padding: 12px 20px;
+  font-size: 14px;
+  border-radius: 4px;
 }
-.divider {
-  height: 1px;
-  background-color: rgb(243, 165, 42);
-  /* background-color: rgb(105, 244, 181) */
-  margin: 20px;
+
+.el-button--medium {
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+button i {
+  margin-right: 1px;
+}
+
+.list-inline,
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+@media (max-width: 767.98px) {
+  .social-login__button {
+    flex-basis: 100%;
+    margin: 0 0 0.5rem !important;
+  }
 }
