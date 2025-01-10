@@ -1,4 +1,11 @@
 // common
+.gap_10 {
+  gap: 10px;
+}
+.undline {
+  text-decoration: none;
+}
+
 .text_no_wrap {
   white-space: nowrap;
 }
@@ -10,6 +17,9 @@
 }
 .flex_betwwen {
   justify-content: space-between;
+}
+.flex_wrap {
+  flex-wrap: wrap;
 }
 .fs_40 {
   font-size: 40px;
@@ -87,9 +97,8 @@ footer {
   max-width: 1153px;
   width: 100%;
   margin: 0 auto;
-  padding-top: 15px;
   flex-wrap: wrap;
-  padding-left: 5px;
+  padding: 15px 15px 0 15px;
 }
 .logo_footer {
   background-image: url("./image/Group.png");
@@ -109,7 +118,7 @@ footer {
 }
 .sub {
   background-image: url("./image/location-dot-solid.svg");
-  width: 13px;
+  width: 14px;
   height: 15px;
   background-size: cover;
   margin-right: 5px;
@@ -135,4 +144,24 @@ footer {
   border-top: 1px solid #a0a4a8;
   color: #828282;
   margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer_right {
+  gap: 30px;
+}
+@media (max-width: 1000px) {
+  .footer_right {
+    flex-wrap: wrap;
+  }
+  .footer_content p:last-child {
+    padding: 0;
+  }
+}
+// màn tablet
+@media (max-width: 768px) {
+}
+// màn mobile
+@media (max-width: 480px) {
 }
