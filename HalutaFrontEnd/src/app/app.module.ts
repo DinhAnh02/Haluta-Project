@@ -14,13 +14,10 @@ import { SigninComponent } from './layout/signin/signin.component';
     HeaderComponent,
     FooterComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
