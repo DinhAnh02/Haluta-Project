@@ -1,0 +1,171 @@
+.width_full {
+  width: 100%;
+}
+
+.signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #2e7d32;
+}
+
+.register-form {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px 24px;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+.content {
+  width: 100%;
+  max-width: 400px;
+}
+
+.register-header {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 800;
+  color: #2e7d32;
+  margin-bottom: 20px;
+}
+
+.row-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.phone {
+  width: 100%;
+  max-width: 170px;
+}
+
+.name-customer {
+  width: 100%;
+  max-width: 220px;
+  margin-right: 10px;
+}
+
+.label-text {
+  color: #4caf50;
+}
+
+.form-control {
+  color: #495057;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}
+
+.form-control:focus {
+  color: #2e7d32;
+  background-color: #ffffff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(46, 125, 50, 0.5);
+  border-color: #66bb6a;
+}
+
+.password-field {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 44px;
+  right: 16px;
+  transform: translateY(-50%);
+  color: #4caf50;
+  cursor: pointer;
+}
+
+.checkbox-text {
+  color: #2e7d32;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* Màu checkbox khi được chọn */
+.checkbox-text input[type="checkbox"]:checked {
+  border-color: #2e7d32;
+  background-color: #4caf50;
+}
+
+.form-check-input {
+  margin-right: 5px;
+}
+
+.register-link {
+  color: #66bb6a;
+  text-decoration: none;
+}
+
+.button-signin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-button {
+  background: #388e3c;
+  color: #ffffff;
+  border-radius: 30px;
+  width: 80%;
+  padding: 10px 0;
+  margin-top: 20px;
+  border: none;
+}
+
+.divider {
+  height: 1px;
+  background-color: #a5d6a7;
+  margin: 20px;
+}
+
+.divider-nospace {
+  border-top: 1px solid white;
+}
+
+.form-control::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgba(46, 125, 50, 0.6); /* Placeholder xanh lá nhạt */
+  opacity: 1;
+  /* Firefox */
+}
+
+.form-control:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: rgba(46, 125, 50, 0.6);
+}
+
+.form-control::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: rgba(46, 125, 50, 0.6);
+}
+
+// .close-button {
+//   background-color: #388e3c;
+//   width: 30px;
+//   height: 30px;
+//   border-radius: 50%;
+//   position: absolute;
+//   top: -14px;
+//   right: -15px;
+//   border: none;
+//   font-size: 20px;
+//   color: #fff;
+//   cursor: pointer;
+//   transition: color 0.3s ease-in-out;
+// }
+
+// .close-button:hover {
+//   color: #d32f2f;
+// }
