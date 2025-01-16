@@ -1,4 +1,4 @@
-package com.example.webecom.config; // Thay đổi package theo cấu trúc của bạn
+package Haluta.example.demo.config; // Thay đổi package theo cấu trúc của bạn
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

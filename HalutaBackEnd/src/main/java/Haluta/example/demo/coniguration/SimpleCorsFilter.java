@@ -1,4 +1,4 @@
-package com.example.webecom.coniguration;
+package Haluta.example.demo.coniguration;
 
 import jakarta.servlet.*;
 
