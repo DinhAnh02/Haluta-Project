@@ -1,4 +1,4 @@
-package Haluta.example.demo.Response;
+package Haluta.example.demo.response;
 
 import lombok.Getter;
 

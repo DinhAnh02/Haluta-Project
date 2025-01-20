@@ -6,8 +6,10 @@ import Haluta.example.demo.enums.Role.CustomerRole;
 import Haluta.example.demo.enums.Role.UserRole;
 import Haluta.example.demo.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.stereotype.Service;
+
+import java.util.Objects;
+
 
 @Service
 @RequiredArgsConstructor
@@ -16,20 +18,22 @@ public class AuthServiceImpl implements AuthService {
     private final CustomerRepository customerRepository;
 
     @Override
-    public UserDto createCustomer(SignUpRequest signupRequest) {
+    public Customer createCustomer(SignUpRequest signupRequest) {
         Customer customer = new Customer();
         customer.setEmail(signupRequest.getEmail());
-        customer.setPassword(signupRequest.getPassword());
         customer.setCustomer_name(signupRequest.getFull_name());
         customer.setPhone(signupRequest.getPhone());
-        customer.setPassword(signupRequest.getPassword());
         customer.setFull_name(signupRequest.getFull_name());
-        customer.setRole(String.valueOf(UserRole.CUSTOMERS));
-        customer.setType_customer(String.valueOf(CustomerRole.SystemCustomer));
-        UserDto userDto = new UserDto();
-        Customer create = customerRepository.save(customer);
-        userDto.setId(create.getId());
-        return userDto;
+        if(Objects.equals(signupRequest.getAgain_password(), signupRequest.getPassword())){
+            customer.setPassword(signupRequest.getPassword());
+            customer.setAgain_password(signupRequest.getAgain_password());
+            customer.setRole(String.valueOf(UserRole.CUSTOMERS));
+            customer.setType_customer(String.valueOf(CustomerRole.SystemCustomer));
+            if(customerRepository.findAll().isEmpty()){customer.setCustomer_id(1L);}
+            else {for(int i = 0; i < customerRepository.findAll().size(); i++) { customer.setCustomer_id((long) customerRepository.findAll().size() + i);}}
+            return customerRepository.save(customer);
+        }
+        return null;
     }
 
 //     public Customer findByEmail(LoginRequest loginRequest) {

@@ -1,9 +1,9 @@
 package Haluta.example.demo.controller;
 
 
-import Haluta.example.demo.Response.ResponseMessage;
+import Haluta.example.demo.entity.Customer;
+import Haluta.example.demo.response.ResponseMessage;
 import Haluta.example.demo.dto.Auth.SignUpRequest;
-import Haluta.example.demo.dto.Auth.UserDto;
 import Haluta.example.demo.services.auth.AuthService;
 
 import jakarta.validation.Valid;
@@ -13,13 +13,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/{api_prefix}")
+@RequestMapping("/{api_prefix}/auth")
 @RequiredArgsConstructor
 public class AuthController {
     private final AuthService authService;
-    @PostMapping("/signup")
+    @PostMapping("/public/signup")
     public ResponseEntity<?> signupCustomer(@Valid @RequestBody SignUpRequest signUpRequest){
-        UserDto createdCustomer = authService.createCustomer(signUpRequest);
+        Customer createdCustomer = authService.createCustomer(signUpRequest);
         if(createdCustomer == null){
             return new ResponseEntity<>("Customer not create", HttpStatus.BAD_REQUEST);
         }

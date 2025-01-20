@@ -1,16 +1,9 @@
 package Haluta.example.demo.dto.Auth;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.*;
 
-
-@NoArgsConstructor
-@Setter
-@Getter
-
+@Data
 public class SignUpRequest {
     @NotBlank(message = "Fullname is required")
     private String full_name;
@@ -27,10 +20,9 @@ public class SignUpRequest {
     @Email(message = "Email should be valid")
     @NotBlank(message = "Email is required")
     private String email;
-    @Size(min = 10, max = 10, message = "Phone must have 10 characters")
-    @Pattern(regexp = "^(0|\\+84)(2[0-9]|3[2-9]|5[6-9]|7[0-9]|8[1-9]|9[0-9])[0-9]{7,8}$", message = "Must have only number")
-    @NotBlank(message = "Phone is required")
-    private int phone;
+    @Digits(integer = 10, fraction = 0)
+    @NotNull(message = "Phone is required")
+    private Integer phone;
 
 
 }

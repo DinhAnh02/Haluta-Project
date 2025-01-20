@@ -7,16 +7,11 @@ import lombok.*;
 @Entity
 @Data
 @Table(name="customer")
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true)
     private Long customer_id;
     @Column(unique=true)
     private String customer_name;
@@ -25,6 +20,7 @@ public class Customer {
     private String full_name;
     private String password;
     private String again_password;
+    @Column(unique=true)
     private int phone;
     private String role;
     private String type_customer;

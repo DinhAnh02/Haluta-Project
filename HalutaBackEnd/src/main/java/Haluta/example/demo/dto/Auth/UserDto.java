@@ -10,10 +10,6 @@ import lombok.*;
 
 @Valid
 @Data
-@NoArgsConstructor
-@Getter
-@Setter
-
 public class UserDto {
     private Long id;
     @NotEmpty(message = "ko dc de trong")
