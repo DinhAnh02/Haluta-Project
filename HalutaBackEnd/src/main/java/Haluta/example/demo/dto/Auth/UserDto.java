@@ -11,13 +11,9 @@ import lombok.*;
 
 @Data
 public class UserDto {
-//    @JsonIgnore
-//    @Digits(integer = 10, fraction = 0)
-//    @NotNull(message = "Phone is required")
-//    private Integer phone;
+
     @JsonIgnore
     private Long id;
-    @NotBlank(message = "Email is required")
-    @Email(message = "Email should be valid")
-    private String email;
+    @NotBlank(message = "Email or phone number is required")
+    private String username;
 }

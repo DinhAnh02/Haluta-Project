@@ -6,8 +6,8 @@ import Haluta.example.demo.enums.Role.CustomerRole;
 import Haluta.example.demo.enums.Role.UserRole;
 import Haluta.example.demo.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-
 import java.util.Objects;
 
 
@@ -16,14 +16,6 @@ import java.util.Objects;
 
 public class AuthServiceImpl implements AuthService {
     private final CustomerRepository customerRepository;
-
-    public Customer findByEmail(LoginRequest loginRequest) {
-        return customerRepository.findByEmail(loginRequest.getEmail());
-    }
-
-//    public Customer findByPhone(LoginRequest loginRequest) {
-//        return customerRepository.findByPhone(loginRequest.getPhone());
-//    }
 
     @Override
     public Customer createCustomer(SignUpRequest signupRequest) {
@@ -46,18 +38,18 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public UserDto loginCustomer(LoginRequest loginRequest) {
-        Customer customer = findByEmail(loginRequest);
         UserDto user = new UserDto();
-        if(customer == null){return null;}
-        else {
-            if (loginRequest.getPassword().equals(customer.getPassword())) {
-                  user.setId(customer.getCustomer_id());
+        if (loginRequest.getUsername().matches("^[\\w-.]+@[\\w-]+\\.[a-zA-Z]{2,}$")) {
+            if(loginRequest.getUsername().equals(customerRepository.findByEmail(loginRequest.getUsername()).getEmail())){
+               user.setId(customerRepository.findByEmail(loginRequest.getUsername()).getCustomer_id());
             }
-            else {
-                return null;
+        } else if (loginRequest.getUsername().matches("^\\d{9,}$")) {
+            if(loginRequest.getUsername().equals(customerRepository.findByPhone(Integer.valueOf(loginRequest.getUsername())).getPhone().toString())){
+                user.setId(customerRepository.findByPhone(Integer.valueOf(loginRequest.getUsername())).getCustomer_id());
             }
+        } else {
+            throw new IllegalArgumentException("Email or phone number must be valid");
         }
         return user;
     }
-
 }
