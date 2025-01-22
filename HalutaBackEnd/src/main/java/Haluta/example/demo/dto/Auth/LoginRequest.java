@@ -8,4 +8,5 @@ import lombok.*;
 public class LoginRequest extends UserDto{
     @NotBlank(message = "Password is required")
     private String password;
+
 }

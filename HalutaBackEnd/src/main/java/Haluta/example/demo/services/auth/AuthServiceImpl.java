@@ -6,7 +6,6 @@ import Haluta.example.demo.enums.Role.CustomerRole;
 import Haluta.example.demo.enums.Role.UserRole;
 import Haluta.example.demo.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -17,6 +16,14 @@ import java.util.Objects;
 
 public class AuthServiceImpl implements AuthService {
     private final CustomerRepository customerRepository;
+
+    public Customer findByEmail(LoginRequest loginRequest) {
+        return customerRepository.findByEmail(loginRequest.getEmail());
+    }
+
+//    public Customer findByPhone(LoginRequest loginRequest) {
+//        return customerRepository.findByPhone(loginRequest.getPhone());
+//    }
 
     @Override
     public Customer createCustomer(SignUpRequest signupRequest) {
@@ -37,21 +44,20 @@ public class AuthServiceImpl implements AuthService {
         return null;
     }
 
-//     public Customer findByEmail(LoginRequest loginRequest) {
-//         return userRepository.findByEmail(loginRequest.getEmail());
-//     }
-//
-//     @Override
-//     public UserDto loginCustomer(LoginRequest loginRequest) {
-//         User user = findByEmail(loginRequest);
-//         if (loginRequest.getPassword().equals(user.getPassword())) {
-//             UserDto userDto = new UserDto();
-//             userDto.setId(user.getId());
-//             userDto.setEmail(user.getEmail());
-//             return userDto;
-//         }
-//         return null;
-//
-//     }
+    @Override
+    public UserDto loginCustomer(LoginRequest loginRequest) {
+        Customer customer = findByEmail(loginRequest);
+        UserDto user = new UserDto();
+        if(customer == null){return null;}
+        else {
+            if (loginRequest.getPassword().equals(customer.getPassword())) {
+                  user.setId(customer.getCustomer_id());
+            }
+            else {
+                return null;
+            }
+        }
+        return user;
+    }
 
 }

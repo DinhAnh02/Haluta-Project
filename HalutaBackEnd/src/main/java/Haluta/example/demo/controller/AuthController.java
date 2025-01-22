@@ -1,9 +1,9 @@
 package Haluta.example.demo.controller;
 
 
+import Haluta.example.demo.dto.Auth.*;
 import Haluta.example.demo.entity.Customer;
 import Haluta.example.demo.response.ResponseMessage;
-import Haluta.example.demo.dto.Auth.SignUpRequest;
 import Haluta.example.demo.services.auth.AuthService;
 
 import jakarta.validation.Valid;
@@ -26,14 +26,18 @@ public class AuthController {
         return ResponseEntity.ok(new ResponseMessage("Created Success"));
     }
 
-//    @PostMapping("/login")
-//    public ResponseEntity<?> loginCustomer(@Valid @RequestBody LoginRequest loginRequest){
-//        UserDto loginCustomerDto = authService.loginCustomer(loginRequest);
-//        if(loginCustomerDto == null){
-//            return new ResponseEntity<>("Login Fail!", HttpStatus.UNAUTHORIZED);
-//        }
-//        return ResponseEntity.ok(new ResponseMessage("Login Success"));
-//    }
+    @PostMapping("/public/login")
+    public ResponseEntity<?> loginCustomer(@Valid @RequestBody LoginRequest loginRequest){
+        UserDto loginCustomerDto = authService.loginCustomer(loginRequest);
+        if(loginCustomerDto == null){
+            return new ResponseEntity<>("Wrong email or password, please check again !", HttpStatus.UNAUTHORIZED);
+        }
+        return ResponseEntity.ok(new ResponseMessage("Login Success"));
+    }
+
+
+
+
 
 
 

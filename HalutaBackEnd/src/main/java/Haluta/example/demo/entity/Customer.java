@@ -21,7 +21,7 @@ public class Customer {
     private String password;
     private String again_password;
     @Column(unique=true)
-    private int phone;
+    private Integer phone;
     private String role;
     private String type_customer;
 
