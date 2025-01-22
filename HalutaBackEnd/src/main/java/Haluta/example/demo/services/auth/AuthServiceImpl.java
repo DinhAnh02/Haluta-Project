@@ -6,7 +6,6 @@ import Haluta.example.demo.enums.Role.CustomerRole;
 import Haluta.example.demo.enums.Role.UserRole;
 import Haluta.example.demo.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import java.util.Objects;
 
