@@ -40,10 +40,16 @@ public class AuthServiceImpl implements AuthService {
     public UserDto loginCustomer(LoginRequest loginRequest) {
         UserDto user = new UserDto();
         if (loginRequest.getUsername().matches("^[\\w-.]+@[\\w-]+\\.[a-zA-Z]{2,}$")) {
+            if(customerRepository.findByEmail(loginRequest.getUsername()) == null){
+               return null;
+            }
             if(loginRequest.getUsername().equals(customerRepository.findByEmail(loginRequest.getUsername()).getEmail())){
                user.setId(customerRepository.findByEmail(loginRequest.getUsername()).getCustomer_id());
             }
         } else if (loginRequest.getUsername().matches("^\\d{9,}$")) {
+            if(customerRepository.findByPhone(Integer.valueOf(loginRequest.getUsername())) == null){
+                return null;
+            }
             if(loginRequest.getUsername().equals(customerRepository.findByPhone(Integer.valueOf(loginRequest.getUsername())).getPhone().toString())){
                 user.setId(customerRepository.findByPhone(Integer.valueOf(loginRequest.getUsername())).getCustomer_id());
             }
