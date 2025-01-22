@@ -6,6 +6,7 @@ import Haluta.example.demo.enums.Role.CustomerRole;
 import Haluta.example.demo.enums.Role.UserRole;
 import Haluta.example.demo.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -30,7 +31,7 @@ public class AuthServiceImpl implements AuthService {
             customer.setRole(String.valueOf(UserRole.CUSTOMERS));
             customer.setType_customer(String.valueOf(CustomerRole.SystemCustomer));
             if(customerRepository.findAll().isEmpty()){customer.setCustomer_id(1L);}
-            else {for(int i = 0; i < customerRepository.findAll().size(); i++) { customer.setCustomer_id((long) customerRepository.findAll().size() + 1);}}
+            else {customer.setCustomer_id((long) customerRepository.findAll().size() + 1);}
             return customerRepository.save(customer);
         }
         return null;

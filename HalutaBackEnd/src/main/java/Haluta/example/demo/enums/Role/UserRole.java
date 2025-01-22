@@ -1,9 +1,7 @@
 package Haluta.example.demo.enums.Role;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-@AllArgsConstructor
-@Getter
+import lombok.*;
 
+@RequiredArgsConstructor
 public enum UserRole {
     ADMIN,
     CUSTOMERS
