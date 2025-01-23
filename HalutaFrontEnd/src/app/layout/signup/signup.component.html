@@ -3,35 +3,72 @@
     <div class="row">
       <div class="resgister col-md-6 width_full">
         <div class="register-form mx-auto">
-          <div class="content">
+          <form
+            class="content"
+            [formGroup]="signUpForm"
+            (ngSubmit)="onSubmit()"
+          >
             <!-- <button type="button" class="cloise-button" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button> -->
             <div class="logo">
-              <img src="./img/Frame.png" alt="" class="logo" />
+              <img src="./img/Frame.png" alt class="logo" />
             </div>
             <h2 class="register-header">Đăng ký</h2>
 
             <!-- Họ và tên -->
             <div class="form-group">
               <label for="full-name">Họ và tên</label>
-              <input type="text" class="form-control" id="full-name" />
+              <input
+                type="text"
+                class="form-control"
+                id="full-name"
+                formControlName="full_name"
+              />
+              <div
+                *ngIf="
+                  signUpForm.get('full_name')?.hasError('required') &&
+                  (signUpForm.get('full_name')?.touched ||
+                    signUpForm.get('full_name')?.dirty) &&
+                  getFullNameError()
+                "
+              >
+                <small class="text-danger"> {{ getFullNameError() }}</small>
+              </div>
+
               <div class="divider-nospace"></div>
             </div>
-
             <div class="row-info">
               <div class="form-group mt-2 name-customer">
                 <label for="address">Tên tài khoản</label>
-                <input type="text" class="form-control" id="address" />
-                <div class="divider-nospace"></div>
-              </div>
-              <div class="form-group mt-2 phone">
-                <label for="address">Phone</label>
                 <input
                   type="text"
                   class="form-control"
                   id="address"
+                  formControlName="customer_name"
+                />
+                <div
+                  *ngIf="
+                    signUpForm.get('customer_name')?.hasError('required') &&
+                    (signUpForm.get('customer_name')?.touched ||
+                      signUpForm.get('customer_name')?.dirty) &&
+                    getCustomerNameError()
+                  "
+                >
+                  <small class="text-danger">
+                    {{ getCustomerNameError() }}</small
+                  >
+                </div>
+                <div class="divider-nospace"></div>
+              </div>
+              <div class="form-group mt-2 phone">
+                <label for="phone">Phone</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="phone"
                   placeholder="Số điện thoại"
+                  formControlName="phone"
                 />
                 <div class="divider-nospace"></div>
               </div>
@@ -40,7 +77,23 @@
             <!-- Email  -->
             <div class="form-group mt-2">
               <label for="email">Email</label>
-              <input type="text" class="form-control" id="email" />
+              <input
+                type="text"
+                class="form-control"
+                id="email"
+                formControlName="email"
+              />
+              <!-- <div
+                *ngIf="
+                  signUpForm.get('email')?.hasError('required') &&
+                  (signUpForm.get('email')?.touched ||
+                    signUpForm.get('email')?.dirty) &&
+                
+                "
+              >
+                <small class="text-danger">{{}}</small>
+              </div> -->
+
               <div class="divider-nospace"></div>
             </div>
 
@@ -49,9 +102,10 @@
               <label for="password">Mật khẩu</label>
               <input
                 type="password"
-                placeholder=""
+                placeholder
                 class="form-control"
                 id="password"
+                formControlName="password"
               />
               <i class="password-toggle fas fa-eye-slash"></i>
               <div class="divider-nospace"></div>
@@ -62,9 +116,10 @@
               <label for="confirm-password">Nhập lại mật khẩu</label>
               <input
                 type="password"
-                placeholder=""
+                placeholder
                 class="form-control"
                 id="confirm-password"
+                formControlName="again_password"
               />
               <i class="password-toggle fas fa-eye-slash"></i>
               <div class="divider-nospace"></div>
@@ -76,14 +131,15 @@
                 <span style="display: flex">
                   <input type="checkbox" class="form-check-input" id="agree" />
                   <label class="form-check-label text-start" for="agree">
-                    Tôi đồng ý với các điều khoản và điều kiện</label
+                    Tôi đồng ý với các
+                    <a href="#">điều khoản và điều kiện</a></label
                   >
                 </span>
               </div>
             </div>
 
             <div class="button-signin">
-              <button type="button" class="register-button">Đăng ký</button>
+              <button type="submit" class="register-button">Đăng ký</button>
             </div>
             <div class="divider"></div>
             <p class="text-center">
@@ -92,7 +148,7 @@
                 <a href="/signin" class="register-link">Đăng nhập</a></span
               >
             </p>
-          </div>
+          </form>
         </div>
       </div>
     </div>
