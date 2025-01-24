@@ -13,11 +13,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/{api_prefix}/auth")
+@RequestMapping("/{api_prefix}/public")
 @RequiredArgsConstructor
 public class AuthController {
     private final AuthService authService;
-    @PostMapping("/public/signup")
+    @PostMapping("/auth/signup")
     public ResponseEntity<?> signupCustomer(@Valid @RequestBody SignUpRequest signUpRequest){
         Customer createdCustomer = authService.createCustomer(signUpRequest);
         if(createdCustomer == null){
@@ -26,7 +26,7 @@ public class AuthController {
         return ResponseEntity.ok(new ResponseMessage("Created Success"));
     }
 
-    @PostMapping("/public/login")
+    @PostMapping("/auth/login")
     public ResponseEntity<?> loginCustomer(@Valid @RequestBody LoginRequest loginRequest){
         UserDto loginCustomerDto = authService.loginCustomer(loginRequest);
         if(loginCustomerDto == null){
