@@ -43,14 +43,24 @@ public class AuthServiceImpl implements AuthService {
                return null;
             }
             if(loginRequest.getUsername().equals(customerRepository.findByEmail(loginRequest.getUsername()).getEmail())){
-               user.setId(customerRepository.findByEmail(loginRequest.getUsername()).getCustomer_id());
+               if(loginRequest.getPassword().equals(customerRepository.findByEmail(loginRequest.getUsername()).getPassword())){
+                   user.setId(customerRepository.findByEmail(loginRequest.getUsername()).getCustomer_id());
+               }
+               else {
+                   return null;
+               }
             }
         } else if (loginRequest.getUsername().matches("^\\d{9,}$")) {
             if(customerRepository.findByPhone(Integer.valueOf(loginRequest.getUsername())) == null){
                 return null;
             }
             if(loginRequest.getUsername().equals(customerRepository.findByPhone(Integer.valueOf(loginRequest.getUsername())).getPhone().toString())){
-                user.setId(customerRepository.findByPhone(Integer.valueOf(loginRequest.getUsername())).getCustomer_id());
+                if(loginRequest.getPassword().equals(customerRepository.findByPhone(Integer.valueOf(loginRequest.getUsername())).getPassword())){
+                    user.setId(customerRepository.findByPhone(Integer.valueOf(loginRequest.getUsername())).getCustomer_id());
+                }
+                else {
+                    return null;
+                }
             }
         } else {
             throw new IllegalArgumentException("Email or phone number must be valid");
