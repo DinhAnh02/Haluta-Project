@@ -21,7 +21,7 @@ public class AuthController {
     public ResponseEntity<?> signupCustomer(@Valid @RequestBody SignUpRequest signUpRequest){
         Customer createdCustomer = authService.createCustomer(signUpRequest);
         if(createdCustomer == null){
-            return new ResponseEntity<>("Customer not create", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Password not match! Created Fail", HttpStatus.BAD_REQUEST);
         }
         return ResponseEntity.ok(new ResponseMessage("Created Success"));
     }

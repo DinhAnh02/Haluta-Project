@@ -4,10 +4,12 @@ import Haluta.example.demo.dto.Auth.*;
 import Haluta.example.demo.entity.Customer;
 import Haluta.example.demo.enums.Role.CustomerRole;
 import Haluta.example.demo.enums.Role.UserRole;
+import Haluta.example.demo.exception.ConflictException;
+import Haluta.example.demo.exception.InvalidException;
 import Haluta.example.demo.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import java.util.Objects;
+import java.util.*;
 
 
 @Service
@@ -19,10 +21,23 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public Customer createCustomer(SignUpRequest signupRequest) {
         Customer customer = new Customer();
-        customer.setEmail(signupRequest.getEmail());
-        customer.setCustomer_name(signupRequest.getFull_name());
-        customer.setPhone(signupRequest.getPhone());
-        customer.setFull_name(signupRequest.getFull_name());
+        for(Customer customers : customerRepository.findAll()) {
+            if(Objects.equals(customers.getEmail(), signupRequest.getEmail())){
+                throw new ConflictException("Email name already exists");
+            }
+            else if(Objects.equals(customers.getPhone(), signupRequest.getPhone())){
+                throw new ConflictException("Phone already exists");
+            }
+            else if(Objects.equals(customers.getCustomer_name(), signupRequest.getCustomer_name())){
+                throw new ConflictException("Customer name already exists");
+            }
+            else {
+                customer.setPhone(signupRequest.getPhone());
+                customer.setEmail(signupRequest.getEmail());
+                customer.setCustomer_name(signupRequest.getCustomer_name());
+                customer.setFull_name(signupRequest.getFull_name());
+            }
+        }
         if(Objects.equals(signupRequest.getAgain_password(), signupRequest.getPassword())){
             customer.setPassword(signupRequest.getPassword());
             customer.setAgain_password(signupRequest.getAgain_password());
@@ -63,7 +78,7 @@ public class AuthServiceImpl implements AuthService {
                 }
             }
         } else {
-            throw new IllegalArgumentException("Email or phone number must be valid");
+            throw new InvalidException("Email or phone not invalid");
         }
         return user;
     }
