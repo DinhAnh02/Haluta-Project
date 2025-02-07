@@ -8,9 +8,11 @@ import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { SignupComponent } from './layout/signup/signup.component';
 import { SigninComponent } from './layout/signin/signin.component';
+import { BannerComponent } from './component/banner/banner.component';
+import { ProductComponent } from './layout/product/product.component';
 
 @NgModule({
-  declarations: [AppComponent, SignupComponent, SigninComponent],
+  declarations: [AppComponent, SignupComponent, SigninComponent, BannerComponent, ProductComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

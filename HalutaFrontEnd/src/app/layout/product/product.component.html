@@ -1,0 +1,51 @@
+<div class="product">
+  <div class="product_title">
+    <div class="product_logo"></div>
+    <p>CÂY XANH CÔNG TRÌNH</p>
+  </div>
+  <div class="bar"></div>
+  <div id="product-container" class="product_total">
+    <div class="product_detail" *ngFor="let product of visibleProducts">
+      <img
+        [src]="product.image"
+        [alt]="product.name"
+        class="product_detail_img"
+      />
+      <div class="discount">
+        <p>{{ product.discount }}</p>
+      </div>
+      <div class="product_name">
+        <p>{{ product.name }}</p>
+      </div>
+      <div class="product_price">
+        <p>{{ product.currentPrice }}</p>
+        <p>
+          <del>{{ product.originalPrice }}</del>
+        </p>
+      </div>
+      <div class="product_rating">
+        <img
+          [src]="product.imageStar"
+          [alt]="product.name"
+          class="product_rating_img"
+        />
+        <p>{{ product.rating }}</p>
+        <p>({{ product.reviews }})</p>
+      </div>
+    </div>
+  </div>
+  <button
+    *ngIf="counter + itemsToShow < products.length"
+    (click)="loadMore()"
+    class="load-more"
+  >
+    Xem Thêm
+  </button>
+  <button
+    *ngIf="counter + itemsToShow > products.length"
+    (click)="hidden()"
+    class="load-more"
+  >
+    Ẩn sản phẩm
+  </button>
+</div>

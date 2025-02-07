@@ -1,0 +1,143 @@
+.product {
+  max-width: 1366px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #d7d6d6;
+  padding-top: 38px;
+}
+
+.product_title {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.product_logo {
+  background-image: url("./image/logo.png");
+  width: 44px;
+  height: 29px;
+  margin-right: 10px;
+}
+.product_title p {
+  font-size: 32px;
+  color: #005424;
+}
+.bar {
+  width: 104px;
+  height: 1px;
+  border: 1px solid #005424;
+  margin: 13px auto 43px auto;
+}
+.product_total {
+  max-width: 1160px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.product_detail {
+  max-width: 260px;
+  width: 100%;
+  background-color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+.product_detail:hover {
+  transform: translateY(-4px);
+}
+.product_detail_img {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 260px;
+  height: 260px;
+}
+.discount {
+  display: flex;
+  justify-content: center;
+  background-color: #fb4e4e;
+  width: 97px;
+  height: 24px;
+  align-items: center;
+  border-radius: 0 32px 32px 0;
+  margin-top: 3px;
+}
+.discount_icon {
+  width: 12px;
+  height: 15px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 4px;
+}
+.discount p {
+  color: white;
+  font-size: 12px;
+}
+.product_name {
+  text-align: center;
+  width: 190px;
+  margin: 0 auto;
+}
+.product_name p {
+  font-size: 20px;
+  margin-top: 4px;
+}
+.product_price {
+  display: flex;
+  justify-content: center;
+  margin-top: 4px;
+}
+.product_price p:first-child {
+  font-size: 20px;
+  color: #da0808;
+  margin-right: 7px;
+}
+.product_price p:last-child {
+  font-size: 20px;
+  color: #52575c;
+}
+.product_rating {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: 14px;
+  margin-bottom: 14px;
+  margin-top: 4px;
+}
+.product_rating_img {
+  width: 12px;
+  height: 12px;
+}
+.product_rating p {
+  color: #898989;
+  font-size: 16px;
+}
+.load-more {
+  width: 150px;
+  height: 40px;
+  border: 1px solid #007934;
+  color: #007934;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  margin: 26px auto 0 auto;
+  padding: 8px 16px;
+  transition: background-color 0.3s;
+}
+
+@media (max-width: 1000px) {
+}
+@media (max-width: 768px) {
+}
+
+@media (max-width: 480px) {
+  .product_title p {
+    font-size: 22px;
+    color: #005424;
+  }
+}
